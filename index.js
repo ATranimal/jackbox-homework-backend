@@ -21,10 +21,13 @@ const youtube = google.youtube({
 
 // TODO: Add an endpoint for encrypting / decrypting localStorage stats
 
+app.get("/health", (req, res) => {
+  res.status(200).send("Healthy!");
+});
+
 app.get("/stats/:ID", (req, res) => {
   const youtubeID = req.params.ID;
 
-  const calculateStats = () => {};
   youtube.videos
     .list({
       id: youtubeID,
