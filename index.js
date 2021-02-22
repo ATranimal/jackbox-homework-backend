@@ -49,19 +49,27 @@ app.get("/stats/:ID", (req, res) => {
         ? (stats.curiousity += 2)
         : (stats.curiousity -= 1);
 
-      if (statistics.likeCount < statistics.dislikeCount) stats.compassion -= 2;
+      if (parseInt(statistics.likeCount) < parseInt(statistics.dislikeCount)) {
+        stats.compassion -= 2;
+      }
 
-      if (statistics.likeCount > statistics.viewCount / 100)
+      if (parseInt(statistics.likeCount) > parseInt(statistics.viewCount) / 100)
         stats.compassion += 1;
 
-      if (statistics.dislikeCount > statistics.viewCount / 100)
+      if (
+        parseInt(statistics.dislikeCount) >
+        parseInt(statistics.viewCount) / 100
+      )
         stats.formality -= 1;
 
-      statistics.commentCount > statistics.viewCount / 1000
-        ? (stats.curiousty += 1)
+      parseInt(statistics.commentCount) > parseInt(statistics.viewCount) / 1000
+        ? (stats.curiousity += 1)
         : (stats.creativity -= 1);
 
-      if (statistics.favoriteCount > statistics.viewCount / 1000)
+      if (
+        parseInt(statistics.favoriteCount) >
+        parseInt(statistics.viewCount) / 1000
+      )
         stats.formality += 1;
 
       if (duration.hours > 0) formality += 1;
